@@ -3,8 +3,24 @@ from models.package import Package
 from models.logistics_system import LogisticsSystem
 from models.locker import Locker
 import time
+from storage.json_storage import load_json, save_json
+from models.user import User
 
+USERS_PATH = "data/users.json"
+PACKAGES_PATH = "data/packages.json"
+
+users_data = load_json(USERS_PATH)
 system = LogisticsSystem()
+
+def login():
+	username = input("Login: ")
+	password = input("Hasło: ")
+
+	for u in users_data:
+		if u["username"] == username and u["password"] == password:
+			return User(username, u["role"])
+		
+	return None
 
 def nadaj_paczke():
 	waga = float(input("Podaj wagę paczki: "))

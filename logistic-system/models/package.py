@@ -4,36 +4,36 @@ from datetime import datetime
 
 
 class Package:
-	def __init__(self, waga, kraj, priorytet=False):
-		self.tracking_id = self._generate_tracking_id()
+	def __init__(self, waga, kraj, owner, priorytet=False):
+		self.tracking_id = f"FLY-{uuid.uuid4().hex[:6].upper()}"
 		self.waga = waga
 		self.kraj = kraj
+		self.owner = owner
 		self.priorytet = priorytet
 
 		self.status = "przyjęta"
 		self.history = [(self.status, self._timestamp())]
-
-	def _generate_tracking_id(self):
-		return f"FlyExpress-{uuid.uuid4().hex[:6].upper()}"
 	
-	def _timestamp(self):
+	def _time(self):
 		return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 	def zmien_status(self, nowy_status):
 		self.status = nowy_status
-		self.history.append((nowy_status, self._timestamp()))
+		self.history.append((nowy_status, self._time()))
 
-	def info(self):
-		return (
-			f"Tracking: {self.tracking_id}\n"
-			f"Status: {self.status}\n"
-			f"Kraj: {self.kraj}\n" 
-			f"Waga: {self.waga} kg\n" 
-			f"Priorytet: {self.priorytet}"
-		)
-	
+	def to_dict(self):
+		return {
+			"tracking_id": self.tracking_id,
+			"waga": self.waga,
+			"kraj": self.waga,
+			"owner": self.owner,
+			"priorytet": self.priorytet,
+			"status": self.status,
+			"history": self.history
+		}
+	'''		
 	def pokaz_historie(self):
 		print("Historia statusów:")
 		for status, time in self.history:
 			print(f"{time} -> {status}")
-			
+	'''
