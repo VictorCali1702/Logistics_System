@@ -81,4 +81,19 @@ def user_menu(user):
 			print("❌ Nieprawidłowy wybór")
 
 admin_menu(system)
-user_menu()
+
+def main():
+	user = login()
+
+	if not user:
+		print("❌ Błędny login lub hasło")
+		return
+	
+	print(f"✅️ Zalogowano jako {user.username} ({user.role})")
+
+	if user.role == "admin":
+		admin_menu(system)
+	else:
+		user_menu(user)
+
+main()
