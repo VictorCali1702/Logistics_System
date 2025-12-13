@@ -24,4 +24,11 @@ class Pricing:
 	def koszt_priorytetu(priorytet):
 		return 30 if priorytet else 0
 	
+	@staticmethod
+	def calculate_price(package):
+		return (
+			Pricing.koszt_wagi(package.waga)
+			+ Pricing.koszt_kraju(package.kraj)
+			+ Pricing.koszt_priorytetu(package.priorytet)
+		)
 		
