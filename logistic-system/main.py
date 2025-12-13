@@ -6,16 +6,18 @@ import time
 from storage.json_storage import load_json, save_json
 from models.user import User
 from reports.admin_reports import raport_statusow
+import os 
 
-USERS_PATH = "data/users.json"
-PACKAGES_PATH = "data/packages.json"
+BASE_DIR = os.path.dirname(__file__)
+USERS_PATH = os.path.join(BASE_DIR, "data", "users.json")
+PACKAGES_PATH = os.path.join(BASE_DIR, "data", "packages.json")
 
 users_data = load_json(USERS_PATH)
 system = LogisticsSystem()
 
 def login():
-	username = input("Login: ")
-	password = input("Hasło: ")
+	username = input("Login: ").strip()
+	password = input("Hasło: ").strip()
 
 	for u in users_data:
 		if u["username"] == username and u["password"] == password:
@@ -36,15 +38,15 @@ def nadaj_paczke(user):
 	system.add_package(paczka)
 
 	print("\n✅️ Paczka nadana!")
-	print("Tracking ID:", paczka.tracing_id)
+	print("Tracking ID:", paczka.tracking_id)
 
 def sledz_paczke():
-	tid = input("Podaj tracing ID: ")
+	tid = input("Podaj tracking ID: ")
 	p = system.find_package(tid)
 
 	if p:
 		print(p.status)
-		for s, t in p.history():
+		for s, t in p.history:
 			print(t, "->", s)
 	
 	else:
@@ -79,8 +81,6 @@ def user_menu(user):
 			break
 		else:
 			print("❌ Nieprawidłowy wybór")
-
-admin_menu(system)
 
 def main():
 	user = login()
