@@ -5,6 +5,7 @@ from models.locker import Locker
 import time
 from storage.json_storage import load_json, save_json
 from models.user import User
+from reports.admin_reports import raport_statusow
 
 USERS_PATH = "data/users.json"
 PACKAGES_PATH = "data/packages.json"
@@ -22,27 +23,32 @@ def login():
 		
 	return None
 
-def nadaj_paczke():
+def admin_menu(system):
+	raport_statusow(system.packages)
+
+
+def nadaj_paczke(user):
 	waga = float(input("Podaj wagę paczki: "))
 	kraj = input("Podaj kraj: ")
 	priorytet = input("Priorytet (tak/nie): ").lower() == "tak"
 
-	paczka = Package(waga, kraj, priorytet)
+	paczka = Package(waga, kraj, user.username, priorytet)
 	system.add_package(paczka)
 
 	print("\n✅️ Paczka nadana!")
-	print(paczka.info())
+	print("Tracking ID:", paczka.tracing_id)
 
 def sledz_paczke():
 	tid = input("Podaj tracing ID: ")
+	p = system.find_package(tid)
 
-	for p in system.packages:
-		if p.tracking_id == tid:
-			print(p.info())
-			p.pokaz_historie()
-			return
+	if p:
+		print(p.status)
+		for s, t in p.history():
+			print(t, "->", s)
 	
-	print("❌ Nie znaleziono paczki")
+	else:
+		print("❌ Nie znaleziono paczki")
 
 def symuluj_statusy():
 	for p in system.packages:
@@ -55,27 +61,24 @@ def symuluj_statusy():
 		elif p.status == "w doręczeniu":
 			p.zmien_status("doręczona")
 		
-def menu():
+def user_menu(user):
 	while True:
 		print("\n📦 SYSTEM LOGISTYCZNY FLY Express")
 		print("1. Nadaj paczkę")
 		print("2. Śledź paczkę")
-		print("3. Symuluj zmianę statusów")
-		print("4. Wyjście")
+		print("3. Wyjście")
 
 		wybor = input("Wybierz opcję: ")
 
 		if wybor == "1":
-			nadaj_paczke()
+			nadaj_paczke(user)
 		elif wybor == "2":
 			sledz_paczke()
 		elif wybor == "3":
-			symuluj_statusy()
-			print("🔄 Statusy zaktualizowane")
-		elif wybor == "4":
 			print("Dziękujemy za skorzystanie z usług FLY Express.")
 			break
 		else:
 			print("❌ Nieprawidłowy wybór")
 
-menu()
+admin_menu(system)
+user_menu()
