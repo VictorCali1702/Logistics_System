@@ -9,6 +9,7 @@ from reports.admin_reports import raport_statusow
 import os 
 from reports.charts import wykres_statusow
 from utils.security import verify_password
+import getpass
 
 STATUS_FLOW = [
 	"przyjęta",
@@ -32,7 +33,7 @@ for p_data in packages_data:
 
 def login():
 	username = input("Login: ").strip()
-	password = input("Hasło: ").strip()
+	password = getpass.getpass("Hasło: ")
 
 	for u in users_data:
 		if u["username"] == username:
