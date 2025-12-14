@@ -8,8 +8,4 @@ def raport_statusow(packages):
 
 	print("📊 STATUSY PACZEK")
 	for k, v in stats.items():
-		print(k, ":", v)
-
-def admin_menu(system):
-	from reports.admin_reports import raport_statusow
-	raport_statusow(system.packages)
+		print(f"{k}: {v}")
