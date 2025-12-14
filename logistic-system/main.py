@@ -8,13 +8,20 @@ from models.user import User
 from reports.admin_reports import raport_statusow
 import os 
 
+STATUS_FLOW = [
+	"przyjęta",
+	"w transporcie",
+	"w sortowni",
+	"w doręczeniu",
+	"doręczona"
+]
+
 BASE_DIR = os.path.dirname(__file__)
 USERS_PATH = os.path.join(BASE_DIR, "data", "users.json")
 PACKAGES_PATH = os.path.join(BASE_DIR, "data", "packages.json")
 
 users_data = load_json(USERS_PATH)
 system = LogisticsSystem()
-
 
 packages_data = load_json(PACKAGES_PATH)
 
@@ -37,17 +44,35 @@ def zapisz_paczki():
 		[p.to_dict() for p in system.packages]
 	)
 
+def auto_update_statuses():
+	for p in system.packages:
+		if p.status != "doręczona":
+			current_index = STATUS_FLOW.index(p.status)
+			next_status = STATUS_FLOW[current_index + 1]
+			p.zmien_status(next_status)
+		
+		zapisz_paczki()
+
+def run_status_scheduler():
+	while True:
+		time.sleep(60) # 60 sekund
+		auto_update_statuses()
+
 def admin_menu(system):
 	while True:
 		print("\n🔐 PANEL ADMINA - FLY Express📦🚚")
 		print("1. Raport statusów paczek")
-		print("2. Wyloguj")
+		print("2. Symuluj zmianę statusów")
+		print("3. Wyloguj")
 
 		wybor = input("Wybierz opcję: ")
 		
 		if wybor == "1":
 			raport_statusow(system.packages)
 		elif wybor == "2":
+			auto_update_statuses()
+			print("⏱️ Statusy paczek zaktualizowane")
+		elif wybor == "3":
 			print("🔓 Wylogowno.")
 			return
 		else:
