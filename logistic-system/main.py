@@ -38,8 +38,20 @@ def zapisz_paczki():
 	)
 
 def admin_menu(system):
-	raport_statusow(system.packages)
+	while True:
+		print("\n🔐 PANEL ADMINA - FLY Express📦🚚")
+		print("1. Raport statusów paczek")
+		print("2. Wyloguj")
 
+		wybor = input("Wybierz opcję: ")
+		
+		if wybor == "1":
+			raport_statusow(system.packages)
+		elif wybor == "2":
+			print("🔓 Wylogowno.")
+			return
+		else:
+			print("❌ Nieprawidłowy wybór")
 
 def nadaj_paczke(user):
 	waga = float(input("Podaj wagę paczki: "))
@@ -90,23 +102,27 @@ def user_menu(user):
 		elif wybor == "2":
 			sledz_paczke()
 		elif wybor == "3":
-			print("Dziękujemy za skorzystanie z usług FLY Express.")
-			break
+			print("🔓 Wylogowno.")
+			print("Dziękujemy za skorzystanie z usług FLY Express📦🚚🌞")
+			return
 		else:
 			print("❌ Nieprawidłowy wybór")
 
 def main():
-	user = login()
-
-	if not user:
-		print("❌ Błędny login lub hasło")
-		return
+	while True:
+		print("\n🔑 LOGOWANIE - FLY Express")
+		user = login()
+		
+		if not user:
+			print("❌ Błędny login lub hasło")
+			continue
 	
-	print(f"✅️ Zalogowano jako {user.username} ({user.role})")
+		print(f"✅️ Zalogowano jako {user.username} ({user.role})")
 
-	if user.role == "admin":
-		admin_menu(system)
-	else:
-		user_menu(user)
+		if user.role == "admin":
+			admin_menu(system)
+		else:
+			user_menu(user)
 
-main()
+while True:
+	main()
