@@ -7,6 +7,7 @@ from storage.json_storage import load_json, save_json
 from models.user import User
 from reports.admin_reports import raport_statusow
 import os 
+from reports.charts import wykres_statusow
 
 STATUS_FLOW = [
 	"przyjęta",
@@ -63,7 +64,8 @@ def admin_menu(system):
 		print("\n🔐 PANEL ADMINA - FLY Express📦🚚")
 		print("1. Raport statusów paczek")
 		print("2. Symuluj zmianę statusów")
-		print("3. Wyloguj")
+		print("3. Wykres statusów paczek")
+		print("4. Wyloguj")
 
 		wybor = input("Wybierz opcję: ")
 		
@@ -73,6 +75,8 @@ def admin_menu(system):
 			auto_update_statuses()
 			print("⏱️ Statusy paczek zaktualizowane")
 		elif wybor == "3":
+			wykres_statusow(system.packages)
+		elif wybor == "4":
 			print("🔓 Wylogowno.")
 			return
 		else:
