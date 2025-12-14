@@ -12,7 +12,7 @@ class Package:
 		self.priorytet = priorytet
 
 		self.status = "przyjęta"
-		self.history = [(self.status, self._timestamp())]
+		self.history = [(self.status, self._time())]
 	
 	def _time(self):
 		return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -25,7 +25,7 @@ class Package:
 		return {
 			"tracking_id": self.tracking_id,
 			"waga": self.waga,
-			"kraj": self.waga,
+			"kraj": self.kraj,
 			"owner": self.owner,
 			"priorytet": self.priorytet,
 			"status": self.status,
@@ -37,3 +37,15 @@ class Package:
 		for status, time in self.history:
 			print(f"{time} -> {status}")
 	'''
+	@staticmethod
+	def from_dict(data):
+		p = Package(
+			data["waga"],
+			data["kraj"],
+			data["owner"],
+			data["priorytet"]
+		)
+		p.tracking_id = data["tracking_id"]
+		p.status = data["status"]
+		p.history = data["history"]
+		return p

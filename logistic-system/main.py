@@ -15,6 +15,12 @@ PACKAGES_PATH = os.path.join(BASE_DIR, "data", "packages.json")
 users_data = load_json(USERS_PATH)
 system = LogisticsSystem()
 
+
+packages_data = load_json(PACKAGES_PATH)
+
+for p_data in packages_data:
+	system.add_package(Package.from_dict(p_data))
+
 def login():
 	username = input("Login: ").strip()
 	password = input("Hasło: ").strip()
@@ -24,6 +30,12 @@ def login():
 			return User(username, u["role"])
 		
 	return None
+
+def zapisz_paczki():
+	save_json(
+		PACKAGES_PATH,
+		[p.to_dict() for p in system.packages]
+	)
 
 def admin_menu(system):
 	raport_statusow(system.packages)
@@ -36,6 +48,7 @@ def nadaj_paczke(user):
 
 	paczka = Package(waga, kraj, user.username, priorytet)
 	system.add_package(paczka)
+	zapisz_paczki()
 
 	print("\n✅️ Paczka nadana!")
 	print("Tracking ID:", paczka.tracking_id)
