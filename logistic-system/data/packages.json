@@ -5,11 +5,27 @@
     "kraj": "W\u0142ochy",
     "owner": "kamil",
     "priorytet": false,
-    "status": "przyj\u0119ta",
+    "status": "dor\u0119czona",
     "history": [
       [
         "przyj\u0119ta",
         "2025-12-14 13:04:21"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:53:44"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 13:55:50"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-14 13:55:56"
+      ],
+      [
+        "dor\u0119czona",
+        "2025-12-14 13:56:52"
       ]
     ]
   },
@@ -19,11 +35,27 @@
     "kraj": "Polska",
     "owner": "janusz",
     "priorytet": true,
-    "status": "przyj\u0119ta",
+    "status": "dor\u0119czona",
     "history": [
       [
         "przyj\u0119ta",
         "2025-12-14 13:09:15"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:53:44"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 13:55:50"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-14 13:55:56"
+      ],
+      [
+        "dor\u0119czona",
+        "2025-12-14 13:56:52"
       ]
     ]
   },
@@ -33,11 +65,27 @@
     "kraj": "Belgia",
     "owner": "kamil",
     "priorytet": true,
-    "status": "przyj\u0119ta",
+    "status": "dor\u0119czona",
     "history": [
       [
         "przyj\u0119ta",
         "2025-12-14 13:26:59"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:53:44"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 13:55:50"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-14 13:55:56"
+      ],
+      [
+        "dor\u0119czona",
+        "2025-12-14 13:56:52"
       ]
     ]
   },
@@ -47,11 +95,75 @@
     "kraj": "Rosja",
     "owner": "janusz",
     "priorytet": false,
-    "status": "przyj\u0119ta",
+    "status": "dor\u0119czona",
     "history": [
       [
         "przyj\u0119ta",
         "2025-12-14 13:27:58"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:53:44"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 13:55:50"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-14 13:55:56"
+      ],
+      [
+        "dor\u0119czona",
+        "2025-12-14 13:56:52"
+      ]
+    ]
+  },
+  {
+    "tracking_id": "FLY-5990F4",
+    "waga": 2.5,
+    "kraj": "Polska",
+    "owner": "kamil",
+    "priorytet": false,
+    "status": "dor\u0119czona",
+    "history": [
+      [
+        "przyj\u0119ta",
+        "2025-12-14 13:53:15"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:53:44"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 13:55:50"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-14 13:55:56"
+      ],
+      [
+        "dor\u0119czona",
+        "2025-12-14 13:56:52"
+      ]
+    ]
+  },
+  {
+    "tracking_id": "FLY-C49228",
+    "waga": 1.0,
+    "kraj": "Holandia",
+    "owner": "janusz",
+    "priorytet": true,
+    "status": "w transporcie",
+    "history": [
+      [
+        "przyj\u0119ta",
+        "2025-12-14 13:56:26"
+      ],
+      [
+        "w transporcie",
+        "2025-12-14 13:56:52"
       ]
     ]
   }
