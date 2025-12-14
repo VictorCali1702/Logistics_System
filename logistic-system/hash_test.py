@@ -1,3 +1,3 @@
 from utils.security import hash_password
 
-print(hash_password("1234"))
+print(hash_password("victor"))

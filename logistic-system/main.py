@@ -8,6 +8,7 @@ from models.user import User
 from reports.admin_reports import raport_statusow
 import os 
 from reports.charts import wykres_statusow
+from utils.security import verify_password
 
 STATUS_FLOW = [
 	"przyjęta",
@@ -34,9 +35,12 @@ def login():
 	password = input("Hasło: ").strip()
 
 	for u in users_data:
-		if u["username"] == username and u["password"] == password:
-			return User(username, u["role"])
-		
+		if u["username"] == username:
+			if verify_password(password, u["password"]):
+				return User(username, u["role"])
+			else:
+				return None
+			
 	return None
 
 def zapisz_paczki():
