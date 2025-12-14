@@ -155,7 +155,7 @@
     "kraj": "Holandia",
     "owner": "janusz",
     "priorytet": true,
-    "status": "w transporcie",
+    "status": "w sortowni",
     "history": [
       [
         "przyj\u0119ta",
@@ -164,6 +164,24 @@
       [
         "w transporcie",
         "2025-12-14 13:56:52"
+      ],
+      [
+        "w sortowni",
+        "2025-12-14 19:41:56"
+      ]
+    ]
+  },
+  {
+    "tracking_id": "FLY-FAD4F2",
+    "waga": 0.8,
+    "kraj": "Portugalia",
+    "owner": "janusz",
+    "priorytet": true,
+    "status": "przyj\u0119ta",
+    "history": [
+      [
+        "przyj\u0119ta",
+        "2025-12-14 19:42:51"
       ]
     ]
   }
