@@ -155,7 +155,7 @@
     "kraj": "Holandia",
     "owner": "janusz",
     "priorytet": true,
-    "status": "w sortowni",
+    "status": "w dor\u0119czeniu",
     "history": [
       [
         "przyj\u0119ta",
@@ -168,6 +168,10 @@
       [
         "w sortowni",
         "2025-12-14 19:41:56"
+      ],
+      [
+        "w dor\u0119czeniu",
+        "2025-12-25 14:05:27"
       ]
     ]
   },
@@ -177,11 +181,33 @@
     "kraj": "Portugalia",
     "owner": "janusz",
     "priorytet": true,
-    "status": "przyj\u0119ta",
+    "status": "w transporcie",
     "history": [
       [
         "przyj\u0119ta",
         "2025-12-14 19:42:51"
+      ],
+      [
+        "w transporcie",
+        "2025-12-25 14:05:27"
+      ]
+    ]
+  },
+  {
+    "tracking_id": "FLY-6602E4",
+    "waga": 7.5,
+    "kraj": "Polska",
+    "owner": "kamil",
+    "priorytet": false,
+    "status": "w transporcie",
+    "history": [
+      [
+        "przyj\u0119ta",
+        "2025-12-25 14:04:19"
+      ],
+      [
+        "w transporcie",
+        "2025-12-25 14:05:27"
       ]
     ]
   }
